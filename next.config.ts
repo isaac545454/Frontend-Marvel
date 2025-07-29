@@ -5,7 +5,14 @@ const nextConfig: NextConfig = {
   images: {
     domains: ['i.annihil.us'],  
   },
-  /* config options here */
+  basePath: '/characters',
+  remotePatterns: [
+    {
+      protocol: 'http',
+      hostname: 'i.annihil.us',
+      pathname: '/**',
+    },
+  ],
 };
 
 export default nextConfig;
