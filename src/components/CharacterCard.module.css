@@ -1,0 +1,19 @@
+.characterCard {
+	border: 1px solid #ccc;
+	padding: 0.5rem;
+	border-radius: 0.5rem;
+	width: 30%;
+	min-width: 200px;
+}
+
+.characterImage {
+	width: 80%;
+	height: 160px;
+	object-fit: cover;
+	border-radius: 0.5rem;
+}
+
+.characterName {
+	margin-top: 0.5rem;
+	font-weight: 500;
+} 
