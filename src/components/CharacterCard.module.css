@@ -4,10 +4,15 @@
 	border-radius: 0.5rem;
 	width: 30%;
 	min-width: 200px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
 }
 
 .characterImage {
-	width: 80%;
+	width: 90%;
 	height: 160px;
 	object-fit: cover;
 	border-radius: 0.5rem;

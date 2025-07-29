@@ -1,0 +1,12 @@
+.charactersContainer {
+  padding: 1rem;
+}
+
+.charactersGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: flex-start;
+} 
