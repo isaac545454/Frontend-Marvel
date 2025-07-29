@@ -1,41 +1,19 @@
-/* app/characters/characters.css */
 
-.characters-container {
+.charactersContainer {
   padding: 1rem;
 }
 
-.characters-title {
+.charactersTitle {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 1rem;
 }
 
-.characters-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+.charactersGrid {
+  display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
-}
-
-@media (min-width: 768px) {
-  .characters-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-.character-card {
-  border: 1px solid #ccc;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-}
-
-.character-image {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 0.5rem;
-}
-
-.character-name {
-  margin-top: 0.5rem;
-  font-weight: 500;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: flex-start;
 }
