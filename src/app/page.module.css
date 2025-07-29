@@ -3,12 +3,6 @@
   padding: 1rem;
 }
 
-.charactersTitle {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
 .charactersGrid {
   display: flex;
   flex-wrap: wrap;
