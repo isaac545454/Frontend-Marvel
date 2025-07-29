@@ -1,6 +1,6 @@
-import { getCharacters } from '@/services/getCharacters'
-import { CharacterCard } from '@/components/CharacterCard'
-import styles from './page.module.css'
+import { Suspense } from 'react'
+import CharactersGrid from './session/CharactersGrid'
+import { ErrorBoundary } from '@/components/ErrorBoundary/ErrorBoundary'
 
 interface CharactersPageProps {
 	searchParams: {
@@ -8,17 +8,14 @@ interface CharactersPageProps {
 	}
 }
 
-export default async function CharactersPage({ searchParams }: CharactersPageProps) {
+export default function CharactersPage({ searchParams }: CharactersPageProps) {
 	const pageParam = searchParams?.page ?? 1
-	const characters = await getCharacters(pageParam)
 
 	return (
-		<div className={styles.charactersContainer}>
-			<div className={styles.charactersGrid}>
-				{characters.map(char => (
-					<CharacterCard key={char.id} character={char} />
-				))}
-			</div>
-		</div>
+		<ErrorBoundary>
+			<Suspense fallback={<div>Carregando personagens...</div>}>
+				<CharactersGrid page={pageParam} />
+			</Suspense>
+		</ErrorBoundary>
 	)
-} 
+}  
