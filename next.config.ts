@@ -5,7 +5,6 @@ const nextConfig: NextConfig = {
   images: {
     domains: ['i.annihil.us'],  
   },
-  basePath: '/characters',
   remotePatterns: [
     {
       protocol: 'http',
