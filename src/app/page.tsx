@@ -1,34 +1,24 @@
 import { getCharacters } from '@/services/getCharacters'
-import Image from 'next/image'
+import { CharacterCard } from '@/components/CharacterCard'
+import styles from './page.module.css'
 
 interface CharactersPageProps {
 	searchParams: {
-		page: string
+		page?: number
 	}
 }
 
 export default async function CharactersPage({ searchParams }: CharactersPageProps) {
-	const params = await searchParams
-	const characters = await getCharacters(Number(params.page))
-	console.log('aaaa', params)
+	const pageParam = searchParams?.page ?? 1
+	const characters = await getCharacters(pageParam)
 
 	return (
-		<div className="characters-container">
-			<h1 className="characters-title">Personagens da Marvel</h1>
-			<ul className="characters-grid">
+		<div className={styles.charactersContainer}>
+			<div className={styles.charactersGrid}>
 				{characters.map(char => (
-					<li key={char.id} className="character-card">
-						<Image
-							src={`${char.thumbnail.path}.${char.thumbnail.extension}`}
-							alt={char.name}
-							width={200}
-							height={200}
-							className="character-image"
-						/>
-						<h2 className="character-name">{char.name}</h2>
-					</li>
+					<CharacterCard key={char.id} character={char} />
 				))}
-			</ul>
+			</div>
 		</div>
 	)
 }
