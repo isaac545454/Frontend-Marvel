@@ -1,16 +1,5 @@
 import { md5 } from '@/lib/md5'
-
-type Thumbnail = {
-	path: string
-	extension: string
-}
-
-type Character = {
-	id: number
-	name: string
-	description: string
-	thumbnail: Thumbnail
-}
+import { Character } from '@/types/Character'
 
 type MarvelAPIResponse = {
 	data: {
@@ -18,7 +7,7 @@ type MarvelAPIResponse = {
 	}
 }
 
-export async function getCharacters(page: number = 1, limit: number = 10): Promise<Character[]> {
+export async function getCharacters(page: number = 1, limit: number = 12): Promise<Character[]> {
 	const { ts, hash, apikey } = md5()
 	const offset = (page - 1) * limit
 
