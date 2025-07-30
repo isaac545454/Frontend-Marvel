@@ -1,6 +1,8 @@
-import { api } from '@/lib/api'
+ 
+import { md5 } from '@/lib/md5'
 import { Character } from '@/types/Character'
 import { MarvelResponse } from '@/types/MarvelResponse'
+ 
 
 interface CharactersResponse {
   characters: Character[]
@@ -8,24 +10,22 @@ interface CharactersResponse {
 }
 
 export async function getCharacters(page: number = 1, limit: number = 15): Promise<CharactersResponse> {
+  const { ts, hash, apikey } = md5()
   const offset = (page - 1) * limit
 
-  try {
-    const response = await api.get<MarvelResponse<Character>>('/characters', {
-      params: {
-        limit,
-        offset
-      }
-    })
+  const response = await fetch(
+    `https://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${apikey}&hash=${hash}&limit=${limit}&offset=${offset}`
+  )
 
-    const totalPages = Math.ceil(response.data.data.total / limit)
-
-    return {
-      characters: response.data.data.results,
-      totalPages
-    }
-  } catch (error) {
-    console.error('Error fetching characters:', error)
+  if (!response.ok) {
     throw new Error('Erro ao buscar personagens')
+  }
+
+  const data: MarvelResponse<Character> = await response.json()
+  const totalPages = Math.ceil(data.data.total / limit)
+
+  return {
+    characters: data.data.results,
+    totalPages
   }
 }

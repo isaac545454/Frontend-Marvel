@@ -1,22 +1,18 @@
 import { md5 } from '@/lib/md5'
 import { Character } from '@/types/Character'
 import { MarvelResponse } from '@/types/MarvelResponse'
+ 
 
 export async function getCharacterById(id: string): Promise<Character | null> {
-  try {
-    const { ts, hash, apikey } = md5()
-    const response = await fetch(
-      `https://gateway.marvel.com/v1/public/characters/${id}?ts=${ts}&apikey=${apikey}&hash=${hash}`
-    )
+  const { ts, hash, apikey } = md5()
+  const response = await fetch(
+    `https://gateway.marvel.com/v1/public/characters/${id}?ts=${ts}&apikey=${apikey}&hash=${hash}`
+  )
 
-    if (!response.ok) {
-      throw new Error('Erro ao buscar personagem')
-    }
-
-    const data: MarvelResponse<Character> = await response.json()
-    return data.data.results[0] || null
-  } catch (error) {
-    console.error('Error fetching character:', error)
-    return null
+  if (!response.ok) {
+    throw new Error('Erro ao buscar personagem')
   }
+
+  const data: MarvelResponse<Character> = await response.json()
+  return data.data.results[0] || null
 }

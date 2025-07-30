@@ -9,11 +9,10 @@ interface CharacterPageProps {
 }
 
 export default async function CharacterPage({ params }: CharacterPageProps) {
-  const character = await getCharacterById(params.id)
+  const resolvedParams = await params
+  const character = await getCharacterById(resolvedParams.id)
 
-  if (!character) {
-    notFound()
-  }
+ 
 
   return (
     <div className={styles.container}>
