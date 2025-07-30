@@ -12,12 +12,14 @@ export default async function SeriesGrid({ searchParams }: PageProps) {
 
   return (
     <div className={styles.seriesContainer}>
-      <div className={styles.seriesGrid}>
-        {series.map(serie => (
-          <SeriesCard key={serie.id} series={serie} />
-        ))}
+      <div className="container">
+        <div className={styles.grid}>
+          {series.map(serie => (
+            <SeriesCard key={serie.id} series={serie} />
+          ))}
+        </div>
+        <Pagination currentPage={page} totalPages={totalPages} />
       </div>
-      <Pagination currentPage={page} totalPages={totalPages} />
     </div>
   )
 } 

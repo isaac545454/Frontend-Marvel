@@ -1,6 +1,6 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 2rem;
   padding: 2rem;
   max-width: 1200px;
@@ -8,23 +8,16 @@
   width: 100%;
 }
 
-@media (max-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.2rem;
-  }
-}
-
 @media (max-width: 768px) {
   .grid {
-    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+    padding: 1rem;
   }
 }
 
 @media (max-width: 400px) {
   .grid {
     grid-template-columns: 1fr;
-    padding: 1rem;
   }
 }
 
