@@ -1,3 +1,10 @@
+.link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
 .card {
   background-color: var(--marvel-dark-gray);
   border: 1px solid var(--border-color);
@@ -9,7 +16,7 @@
   flex-direction: column;
 }
 
-.card:hover {
+.link:hover .card {
   transform: translateY(-4px);
   border-color: var(--marvel-red);
 }
@@ -64,4 +71,4 @@
   font-size: 0.75rem;
   color: var(--marvel-blue);
   margin: 0;
-} 
+}

@@ -62,6 +62,12 @@
   margin-bottom: 0.5rem;
 }
 
+.textSmall {
+  composes: text;
+  width: 40%;
+  margin-top: auto;
+}
+
 @keyframes shimmer {
   to {
     background-position: -200% 0;

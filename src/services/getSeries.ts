@@ -19,6 +19,7 @@ export async function getSeries(page: number = 1, limit: number = 15): Promise<S
 
   const res = await fetch(
     `https://gateway.marvel.com/v1/public/series?ts=${ts}&apikey=${apikey}&hash=${hash}&limit=${limit}&offset=${offset}&orderBy=startYear`,
+    { next: { revalidate: 60 * 60 * 24 } }  
   )
 
   if (!res.ok) throw new Error('Erro ao buscar séries')

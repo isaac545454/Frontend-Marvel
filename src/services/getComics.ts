@@ -19,6 +19,7 @@ export async function getComics(page: number = 1, limit: number = 15): Promise<C
 
   const res = await fetch(
     `https://gateway.marvel.com/v1/public/comics?ts=${ts}&apikey=${apikey}&hash=${hash}&limit=${limit}&offset=${offset}&orderBy=focDate`,
+    { next: { revalidate: 60 * 60 * 24 } }  
   )
 
   if (!res.ok) throw new Error('Erro ao buscar comics')

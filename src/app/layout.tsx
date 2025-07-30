@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={leagueSpartan.className}>
         <Header />
-        <main style={{ paddingTop: 'var(--header-height)' }}>
+        <main>
           {children}
         </main>
         <Footer />

@@ -14,7 +14,8 @@ export async function getCharacters(page: number = 1, limit: number = 15): Promi
   const offset = (page - 1) * limit
 
   const response = await fetch(
-    `https://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${apikey}&hash=${hash}&limit=${limit}&offset=${offset}`
+    `https://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${apikey}&hash=${hash}&limit=${limit}&offset=${offset}`,
+    { next: { revalidate: 60 * 60 * 24 } }  
   )
 
   if (!response.ok) {
