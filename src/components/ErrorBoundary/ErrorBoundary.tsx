@@ -37,7 +37,7 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
         <div className={styles.errorContainer}>
           <h3 className={styles.errorTitle}>Oops! Algo deu errado</h3>
           <p className={styles.errorMessage}>
-            Ocorreu um erro ao carregar os personagens. Tente recarregar a página.
+            Não foi possível carregar o conteúdo. Por favor, tente novamente.
           </p>
           <button 
             className={styles.reloadButton}

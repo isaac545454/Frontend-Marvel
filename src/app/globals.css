@@ -41,6 +41,13 @@
 /* Base styles */
 body {
   background-color: var(--background);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
   color: var(--foreground);
   margin: 0;
   padding: 0;

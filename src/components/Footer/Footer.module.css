@@ -3,7 +3,7 @@
   background-color: var(--header-bg);
   border-top: 1px solid var(--border-color);
   padding: 3rem 0;
-  margin-top: 4rem;
+  margin-top: auto;
 }
 
 .footerContent {

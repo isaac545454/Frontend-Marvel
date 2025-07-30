@@ -1,51 +1,49 @@
 .errorContainer {
-  padding: 20px;
+  padding: 2rem;
   text-align: center;
-  color: #dc3545;
-  border: 1px solid #dc3545;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
-  margin: 20px auto;
+  margin: 2rem auto;
   max-width: 600px;
   width: 90%;
-  background-color: #fff5f5;
-  box-shadow: 0 2px 4px rgba(220, 53, 69, 0.1);
+  background-color: var(--header-bg);
 }
 
 .errorTitle {
   font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-  color: #dc3545;
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: 1rem;
+  color: var(--marvel-red);
 }
 
 .errorMessage {
   font-size: 1rem;
-  margin-bottom: 20px;
-  color: #6c757d;
+  margin-bottom: 1.5rem;
+  color: var(--header-text);
   line-height: 1.5;
 }
 
 .reloadButton {
-  padding: 12px 24px;
-  background-color: #dc3545;
-  color: white;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--marvel-red);
+  color: var(--header-text);
   border: none;
   border-radius: 6px;
   cursor: pointer;
   font-size: 0.9rem;
-  font-weight: 500;
-  transition: background-color 0.2s ease;
+  font-weight: var(--font-weight-medium);
+  transition: opacity 0.2s ease;
 }
 
 .reloadButton:hover {
-  background-color: #c82333;
+  opacity: 0.8;
 }
 
 .reloadButton:active {
-  transform: translateY(1px);
+  opacity: 0.9;
 }
 
 .reloadButton:focus {
-  outline: 2px solid #dc3545;
+  outline: 2px solid var(--marvel-red);
   outline-offset: 2px;
 } 
