@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRef } from 'react';
+import { ActiveLink } from '../ActiveLink/ActiveLink';
 import styles from './Header.module.css';
 
 export default function Header() {
@@ -58,13 +59,18 @@ export default function Header() {
                 onKeyPress={handleKeyPress}
               />
             </div>
-            <Link href="/">Characters</Link>
-            <Link href="/comics">Comics</Link>
-            <Link href="/series">Series</Link>
-            
+            <ActiveLink href="/" className={styles.navLink}>
+              CHARACTERS
+            </ActiveLink>
+            <ActiveLink href="/comics" className={styles.navLink}>
+              COMICS
+            </ActiveLink>
+            <ActiveLink href="/series" className={styles.navLink}>
+              SERIES
+            </ActiveLink>
           </nav>
         </div>
       </div>
     </header>
   );
-} 
+}

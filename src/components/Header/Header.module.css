@@ -28,13 +28,6 @@
   width: auto;
 }
 
-.logo h1 {
-  color: var(--marvel-red);
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin: 0;
-}
-
 .nav {
   margin-left: auto;
   display: flex;
@@ -42,16 +35,8 @@
   align-items: center;
 }
 
-.nav a {
-  color: var(--header-text);
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-
-.nav a:hover {
-  color: var(--marvel-red);
+.navLink {
+  font-size: 0.875rem;
 }
 
 .searchContainer {
@@ -89,4 +74,20 @@
   color: var(--marvel-gray);
   width: 16px;
   height: 16px;
-} 
+}
+
+@media (max-width: 768px) {
+  .nav {
+    gap: 1rem;
+  }
+
+  .searchInput {
+    width: 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  .searchContainer {
+    display: none;
+  }
+}
