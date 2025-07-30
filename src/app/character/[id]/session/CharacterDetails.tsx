@@ -1,25 +1,57 @@
 import { getCharacterById } from '@/services/getCharacterById'
-import { notFound } from 'next/navigation'
+import { formatDate } from '@/lib/date'
+import { CharacterHeader } from './CharacterHeader'
+import { CharacterImage } from './CharacterImage'
+import { CharacterDescription } from './CharacterDescription'
+import { CharacterStats } from './CharacterStats'
+import { CharacterMedia } from './CharacterMedia'
 import styles from './CharacterDetails.module.css'
 
 interface CharacterDetailsProps {
-  id: string
+  params: {
+    id: string
+  }
 }
 
-export default async function CharacterDetails({ id }: CharacterDetailsProps) {
-  const character = await getCharacterById(id)
+export default async function CharacterDetails({ params }: CharacterDetailsProps) {
+  const character = await getCharacterById(params.id)
+  const lastModified = formatDate(character?.modified)
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>{character.name}</h1>
-      {character.description && (
-        <p className={styles.description}>{character.description}</p>
-      )}
-      <img
-        src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-        alt={character.name}
-        className={styles.image}
-      />
+      <CharacterHeader character={character} />
+
+      <div className={styles.content}>
+        <CharacterImage character={character} />
+
+        <div className={styles.info}>
+          {character.description && (
+            <CharacterDescription character={character} />
+          )}
+          
+          <CharacterStats character={character} />
+          
+          {character.comics.items.length > 0 && (
+            <CharacterMedia 
+              title="Últimos Quadrinhos"
+              items={character.comics.items}
+            />
+          )}
+          
+          {character.series.items.length > 0 && (
+            <CharacterMedia 
+              title="Séries"
+              items={character.series.items}
+            />
+          )}
+
+          <div className={styles.footer}>
+            <span className={styles.modified}>
+              Última atualização: {lastModified}
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

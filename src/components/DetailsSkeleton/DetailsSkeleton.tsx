@@ -13,7 +13,9 @@ export function DetailsSkeleton() {
       </div>
 
       <div className={styles.content}>
-        <div className={`${styles.image} ${styles.skeleton}`} />
+        <div className={styles.imageContainer}>
+          <div className={`${styles.image} ${styles.skeleton}`} />
+        </div>
 
         <div className={styles.info}>
           <div className={styles.section}>

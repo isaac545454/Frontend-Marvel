@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import { ErrorBoundary } from '@/components/ErrorBoundary/ErrorBoundary'
 import CharacterDetails from './session/CharacterDetails'
-import { GridCardSkeleton } from '@/components/GridCardSkeleton/GridCardSkeleton'
+import { DetailsSkeleton } from '@/components/DetailsSkeleton/DetailsSkeleton'
 
 interface CharacterPageProps {
   params: {
@@ -9,13 +9,11 @@ interface CharacterPageProps {
   }
 }
 
-export default async function CharacterPage({ params }: CharacterPageProps) {
-  const resolvedParams = await params
-
+export default function CharacterPage({ params }: CharacterPageProps) {
   return (
     <ErrorBoundary>
-      <Suspense fallback={<GridCardSkeleton count={1} />}>
-        <CharacterDetails id={resolvedParams.id} />
+      <Suspense fallback={<DetailsSkeleton  />}>
+        <CharacterDetails params={params} />
       </Suspense>
     </ErrorBoundary>
   )

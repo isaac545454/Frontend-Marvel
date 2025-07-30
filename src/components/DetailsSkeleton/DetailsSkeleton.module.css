@@ -2,57 +2,61 @@
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.content {
+  background: #1a1a1a;
+  border-radius: 16px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) 2fr;
+  gap: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.imageContainer {
+  position: relative;
+  height: 100%;
+  min-height: 500px;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  background: #252525;
+}
+
+.info {
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 2rem;
 }
 
 .header {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .title {
   width: 300px;
   height: 40px;
+  background: #252525;
+  border-radius: 8px;
 }
 
 .externalLinks {
   display: flex;
   gap: 1rem;
-  justify-content: center;
   flex-wrap: wrap;
+  margin-top: 1rem;
 }
 
 .externalLink {
   width: 100px;
   height: 32px;
-  border-radius: 4px;
-}
-
-.content {
-  width: 100%;
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-}
-
-.image {
-  width: 300px;
-  height: 300px;
-  border-radius: 8px;
-  flex-shrink: 0;
-}
-
-.info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  background: #252525;
+  border-radius: 6px;
 }
 
 .section {
@@ -108,12 +112,13 @@
 .skeleton {
   background: linear-gradient(
     90deg,
-    var(--skeleton-start) 0%,
-    var(--skeleton-end) 50%,
-    var(--skeleton-start) 100%
+    #252525 0%,
+    #303030 50%,
+    #252525 100%
   );
   background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 8px;
 }
 
 @keyframes shimmer {
@@ -125,23 +130,35 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .imageContainer {
+    min-height: 400px;
+  }
+
+  .info {
+    padding: 1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 1rem;
-    gap: 1.5rem;
   }
 
-  .content {
-    flex-direction: column;
-  }
-
-  .image {
-    width: 100%;
-    height: 250px;
+  .imageContainer {
+    min-height: 300px;
   }
 
   .title {
     width: 200px;
     height: 32px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
