@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { Comic } from '@/types/Comic'
 import { formatPrice } from '@/lib/formatPrice'
 import styles from './ComicCard.module.css'
@@ -14,7 +15,7 @@ export function ComicCard({ comic }: ComicCardProps) {
   const bestPrice = printPrice > 0 ? printPrice : digitalPrice
 
   return (
-    <div className={styles.card}>
+    <Link href={`/comics/${comic.id}`} className={styles.card}>
       <div className={styles.imageContainer}>
         <Image
           src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
@@ -31,6 +32,6 @@ export function ComicCard({ comic }: ComicCardProps) {
         )}
         <p className={styles.price}>{formatPrice(bestPrice)}</p>
       </div>
-    </div>
+    </Link>
   )
 } 
