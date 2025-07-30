@@ -1,7 +1,9 @@
 export type PageSearchParams = {
-  [key: string]: string | string[] | undefined
+  page?: string
+  q?: string
+  [key: string]: string | undefined
 }
 
 export interface PageProps {
-  searchParams: Promise<PageSearchParams>
+  searchParams: PageSearchParams
 } 

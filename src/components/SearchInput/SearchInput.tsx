@@ -1,16 +1,16 @@
 'use client'
 
 import { FormEvent, useState } from 'react'
-import { useRouter } from 'next/navigation'
 import styles from './SearchInput.module.css'
+import { PageSearchParams } from '@/types/Pagination'
 
 interface SearchInputProps {
   defaultValue?: string
+  searchParams?: PageSearchParams
 }
 
 export function SearchInput({ defaultValue = '' }: SearchInputProps) {
   const [search, setSearch] = useState(defaultValue)
-  const router = useRouter()
 
   const handleSearch = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -19,7 +19,7 @@ export function SearchInput({ defaultValue = '' }: SearchInputProps) {
       return
     }
 
-    router.push(`/search?q=${encodeURIComponent(search)}`)
+    window.location.href = `/search?q=${encodeURIComponent(search)}`
   }
 
   return (

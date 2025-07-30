@@ -6,13 +6,15 @@ import { SearchResults } from './session/SearchResults'
 import { PageProps } from '@/types/Pagination'
 import { PageContainer } from '@/components/PageContainer/PageContainer'
 
-export default function SearchPage({ searchParams }: PageProps) {
+export default async function SearchPage({ searchParams }: PageProps) {
+  const resolvedParams = await searchParams
+  
   return (
     <ErrorBoundary>
       <PageContainer>
-        <SearchInput defaultValue={searchParams?.q?.toString()} />
+        <SearchInput defaultValue={resolvedParams.q} />
         <Suspense fallback={<GridCardSkeleton count={15} />}>
-          <SearchResults searchParams={searchParams} />
+          <SearchResults searchParams={resolvedParams} />
         </Suspense>
       </PageContainer>
     </ErrorBoundary>
