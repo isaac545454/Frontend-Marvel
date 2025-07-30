@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { Character } from '@/types/Character'
 import styles from './CharacterCard.module.css'
 
@@ -8,7 +9,7 @@ interface CharacterCardProps {
 
 export function CharacterCard({ character }: CharacterCardProps) {
   return (
-    <div className={styles.card}>
+    <Link href={`/character/${character.id}`} className={styles.card}>
       <div className={styles.imageContainer}>
         <Image
           src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
@@ -24,6 +25,6 @@ export function CharacterCard({ character }: CharacterCardProps) {
           <p className={styles.description}>{character.description}</p>
         )}
       </div>
-    </div>
+    </Link>
   )
 } 
