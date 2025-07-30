@@ -7,7 +7,7 @@ type MarvelAPIResponse = {
 	}
 }
 
-export async function getCharacters(page: number = 1, limit: number = 12): Promise<Character[]> {
+export async function getCharacters(page: number = 1, limit: number = 15): Promise<Character[]> {
 	const { ts, hash, apikey } = md5()
 	const offset = (page - 1) * limit
 
@@ -17,6 +17,6 @@ export async function getCharacters(page: number = 1, limit: number = 12): Promi
 
 	if (!res.ok) throw new Error('Erro ao buscar personagens')
 
-	const json = (await res.json()) as MarvelAPIResponse
+	const json :MarvelAPIResponse = await res.json()
 	return json.data.results
 }

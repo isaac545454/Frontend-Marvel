@@ -1,0 +1,12 @@
+[33mcommit afb0e1c118fda28b58d132a98b95dda0742b72b5[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Isaac Newton <isaac.newton1221@gmail.com>
+Date:   Tue Jul 29 18:28:53 2025 -0300
+
+    feat: improve responsive layout and error handling
+    
+    - Add ErrorBoundary component with styled error messages
+    - Reorganize components into separate folders
+    - Improve CharacterCard responsive design
+    - Adjust grid layout for better spacing on all devices
+    - Make mobile cards occupy 80% of screen width
+    - Optimize desktop grid spacing with 4rem column gap

@@ -1,0 +1,92 @@
+.header {
+  width: 100%;
+  min-height: var(--header-height);
+  background-color: var(--header-bg);
+  border-bottom: 1px solid var(--border-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.headerContent {
+  min-height: var(--header-height);
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.logo {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo img {
+  height: 100%;
+  width: auto;
+}
+
+.logo h1 {
+  color: var(--marvel-red);
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.nav {
+  margin-left: auto;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav a {
+  color: var(--header-text);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav a:hover {
+  color: var(--marvel-red);
+}
+
+.searchContainer {
+  position: relative;
+  margin-right: 2rem;
+}
+
+.searchInput {
+  background-color: var(--marvel-dark-gray);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--header-text);
+  padding: 0.5rem 1rem;
+  padding-left: 2.5rem;
+  font-size: 0.9rem;
+  width: 250px;
+  transition: all 0.2s ease;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--marvel-red);
+  background-color: var(--marvel-light-gray);
+}
+
+.searchInput::placeholder {
+  color: var(--marvel-gray);
+}
+
+.searchIcon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--marvel-gray);
+  width: 16px;
+  height: 16px;
+} 

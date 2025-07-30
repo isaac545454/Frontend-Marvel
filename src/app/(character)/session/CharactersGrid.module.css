@@ -7,19 +7,25 @@
 
 .charactersGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  column-gap: 4rem;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 2rem;
   row-gap: 1.5rem;
   width: 100%;
   padding: 0 2rem;
 }
 
 /* Tablet */
-@media (max-width: 600px) {
+@media (max-width: 1024px) {
   .charactersGrid {
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.2rem;
     padding: 0 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .charactersGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 

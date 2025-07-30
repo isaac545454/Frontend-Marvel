@@ -1,0 +1,36 @@
+.comicsContainer {
+  padding: 2rem 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.loadMore {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.loadMoreButton {
+  background-color: var(--button-bg);
+  color: var(--foreground);
+  border: none;
+  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.loadMoreButton:hover {
+  background-color: var(--button-hover-bg);
+}
+
+.loadMoreButton:disabled {
+  background-color: var(--marvel-gray);
+  cursor: not-allowed;
+} 

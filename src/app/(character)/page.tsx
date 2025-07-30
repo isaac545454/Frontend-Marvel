@@ -1,6 +1,7 @@
 import { Suspense } from 'react'
 import CharactersGrid from './session/CharactersGrid'
 import { ErrorBoundary } from '@/components/ErrorBoundary/ErrorBoundary'
+import { GridCardSkeleton } from '@/components/GridCardSkeleton/GridCardSkeleton'
 
 interface CharactersPageProps {
 	searchParams: {
@@ -13,7 +14,7 @@ export default function CharactersPage({ searchParams }: CharactersPageProps) {
 
 	return (
 		<ErrorBoundary>
-			<Suspense fallback={<div>Carregando personagens...</div>}>
+			<Suspense fallback={<GridCardSkeleton count={15} />}>
 				<CharactersGrid page={pageParam} />
 			</Suspense>
 		</ErrorBoundary>
