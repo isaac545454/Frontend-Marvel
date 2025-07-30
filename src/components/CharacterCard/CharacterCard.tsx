@@ -5,9 +5,11 @@ import styles from './CharacterCard.module.css'
 
 interface CharacterCardProps {
   character: Character
+  searchParams: any
 }
 
-export function CharacterCard({ character }: CharacterCardProps) {
+export function CharacterCard({ character, searchParams }: CharacterCardProps) {
+  const resolvedParams = await searchParams
   return (
     <Link href={`/character/${character.id}`} className={styles.card}>
       <div className={styles.imageContainer}>

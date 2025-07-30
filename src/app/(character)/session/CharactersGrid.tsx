@@ -14,7 +14,7 @@ export default async function CharactersGrid({ searchParams }: PageProps) {
     <div className={styles.charactersContainer}>
       <div className={styles.charactersGrid}>
         {characters.map(char => (
-          <CharacterCard key={char.id} character={char} />
+          <CharacterCard key={char.id} character={char} searchParams={searchParams} />
         ))}
       </div>
       <Pagination currentPage={page} totalPages={totalPages} />
