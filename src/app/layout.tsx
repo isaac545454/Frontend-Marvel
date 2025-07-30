@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { League_Spartan } from "next/font/google";
 import Header from "@/components/Header/Header";
+import { Footer } from "@/components/Footer/Footer";
 import "./globals.css";
 
 const leagueSpartan = League_Spartan({
@@ -25,6 +26,7 @@ export default function RootLayout({
         <main style={{ paddingTop: 'var(--header-height)' }}>
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );

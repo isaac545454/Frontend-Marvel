@@ -1,0 +1,87 @@
+.footer {
+  width: 100%;
+  background-color: var(--header-bg);
+  border-top: 1px solid var(--border-color);
+  padding: 3rem 0;
+  margin-top: 4rem;
+}
+
+.footerContent {
+  display: flex;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.copyright {
+  color: var(--marvel-gray);
+  font-size: 0.875rem;
+}
+
+.nav {
+  display: flex;
+  gap: 4rem;
+}
+
+.linkGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.groupTitle {
+  color: var(--marvel-red);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.navLink {
+  font-size: 0.875rem;
+  color: var(--header-text);
+}
+
+.socialLink {
+  color: var(--header-text);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.socialLink:hover {
+  color: var(--marvel-red);
+}
+
+@media (max-width: 768px) {
+  .footerContent {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .nav {
+    gap: 2rem;
+  }
+
+  .brand {
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .linkGroup {
+    align-items: center;
+  }
+}
