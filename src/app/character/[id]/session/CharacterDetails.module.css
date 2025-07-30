@@ -4,6 +4,25 @@
   margin: 0 auto;
 }
 
+.headerContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+  width: 100%;
+}
+
+.actions {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .content {
   background: #1a1a1a;
   border-radius: 16px;

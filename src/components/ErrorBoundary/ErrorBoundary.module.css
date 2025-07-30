@@ -23,26 +23,48 @@
   line-height: 1.5;
 }
 
+.buttonContainer {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.backButton,
 .reloadButton {
   padding: 0.75rem 1.5rem;
-  background-color: var(--marvel-red);
-  color: var(--header-text);
   border: none;
   border-radius: 6px;
   cursor: pointer;
   font-size: 0.9rem;
   font-weight: var(--font-weight-medium);
-  transition: opacity 0.2s ease;
+  transition: all 0.2s ease;
 }
 
+.backButton {
+  background-color: var(--header-bg);
+  color: var(--header-text);
+  border: 1px solid var(--marvel-red);
+}
+
+.reloadButton {
+  background-color: var(--marvel-red);
+  color: var(--header-text);
+}
+
+.backButton:hover,
 .reloadButton:hover {
-  opacity: 0.8;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
+.backButton:active,
 .reloadButton:active {
+  transform: translateY(0);
   opacity: 0.9;
 }
 
+.backButton:focus,
 .reloadButton:focus {
   outline: 2px solid var(--marvel-red);
   outline-offset: 2px;

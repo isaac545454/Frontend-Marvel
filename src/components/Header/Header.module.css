@@ -13,14 +13,17 @@
   min-height: var(--header-height);
   display: flex;
   align-items: center;
-  padding: 1rem 0;
+  padding: 1rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .logo {
-  height: 50px;
+  height: 40px;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  flex-shrink: 0;
 }
 
 .logo img {
@@ -29,65 +32,63 @@
 }
 
 .nav {
-  margin-left: auto;
   display: flex;
-  gap: 2rem;
+  gap: 0.5rem;
   align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .navLink {
   font-size: 0.875rem;
-}
-
-.searchContainer {
-  position: relative;
-  margin-right: 2rem;
-}
-
-.searchInput {
-  background-color: var(--marvel-dark-gray);
-  border: 1px solid var(--border-color);
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem 0.75rem;
   border-radius: 4px;
-  color: var(--header-text);
-  padding: 0.5rem 1rem;
-  padding-left: 2.5rem;
-  font-size: 0.9rem;
-  width: 250px;
-  transition: all 0.2s ease;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
 }
 
-.searchInput:focus {
-  outline: none;
-  border-color: var(--marvel-red);
-  background-color: var(--marvel-light-gray);
+.favoritesLink .heartIcon {
+  transition: all 0.3s ease;
 }
 
-.searchInput::placeholder {
-  color: var(--marvel-gray);
-}
-
-.searchIcon {
-  position: absolute;
-  left: 0.75rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--marvel-gray);
-  width: 16px;
-  height: 16px;
+.favoritesLink:hover .heartIcon {
+  stroke: red;
+  transform: scale(1.1);
 }
 
 @media (max-width: 768px) {
-  .nav {
-    gap: 1rem;
+  .headerContent {
+    padding: 0.75rem;
+  }
+  
+  .logo {
+    height: 32px;
   }
 
-  .searchInput {
-    width: 200px;
+  .nav {
+    gap: 0.25rem;
+  }
+
+  .navLink {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.6rem;
   }
 }
 
-@media (max-width: 600px) {
-  .searchContainer {
-    display: none;
+@media (max-width: 480px) {
+  .headerContent {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .nav {
+    width: 100%;
+    justify-content: center;
   }
 }

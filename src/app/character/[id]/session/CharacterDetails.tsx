@@ -5,6 +5,7 @@ import { CharacterImage } from './CharacterImage'
 import { CharacterDescription } from './CharacterDescription'
 import { CharacterStats } from './CharacterStats'
 import { CharacterMedia } from './CharacterMedia'
+import { CharacterActions } from './CharacterActions'
 import styles from './CharacterDetails.module.css'
 
 interface CharacterDetailsProps {
@@ -19,7 +20,14 @@ export default async function CharacterDetails({ params }: CharacterDetailsProps
 
   return (
     <div className={styles.container}>
-      <CharacterHeader character={character} />
+      <div className={styles.headerContainer}>
+        <CharacterHeader character={character} />
+        <CharacterActions 
+          characterId={character.id.toString()}
+          characterName={character.name} 
+          characterImage={character.thumbnail.path + '.' + character.thumbnail.extension}
+        />
+      </div>
 
       <div className={styles.content}>
         <CharacterImage character={character} />

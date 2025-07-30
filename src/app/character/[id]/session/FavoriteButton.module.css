@@ -1,0 +1,30 @@
+.favoriteButton {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 8px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favoriteButton:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.heartIcon {
+  transition: all 0.3s ease;
+  stroke: #fff;
+}
+
+.favoriteButton:hover .heartIcon {
+  stroke: #ff1744;
+}
+
+.favoriteButton .heartIcon[fill="red"] {
+  fill: #ff1744;
+  stroke: #ff1744;
+}

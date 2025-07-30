@@ -37,14 +37,22 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
         <div className={styles.errorContainer}>
           <h3 className={styles.errorTitle}>Oops! Algo deu errado</h3>
           <p className={styles.errorMessage}>
-            Não foi possível carregar o conteúdo. Por favor, tente novamente.
+            Não foi possível carregar o conteúdo.
           </p>
-          <button 
-            className={styles.reloadButton}
-            onClick={() => window.location.reload()}
-          >
-            Recarregar Página
-          </button>
+          <div className={styles.buttonContainer}>
+            <button 
+              className={styles.backButton}
+              onClick={() => window.location.href = '/'}
+            >
+              Voltar para Página Inicial
+            </button>
+            <button 
+              className={styles.reloadButton}
+              onClick={() => window.location.reload()}
+            >
+              Tentar Novamente
+            </button>
+          </div>
         </div>
       )
     }
