@@ -2,21 +2,14 @@ import { Suspense } from 'react'
 import CharactersGrid from './session/CharactersGrid'
 import { ErrorBoundary } from '@/components/ErrorBoundary/ErrorBoundary'
 import { GridCardSkeleton } from '@/components/GridCardSkeleton/GridCardSkeleton'
+import { PageProps } from '@/types/Pagination'
 
-interface CharactersPageProps {
-	searchParams: {
-		page?: number
-	}
+export default function CharactersPage({ searchParams }: PageProps) {
+  return (
+    <ErrorBoundary>
+      <Suspense fallback={<GridCardSkeleton count={15} />}>
+        <CharactersGrid searchParams={searchParams} />
+      </Suspense>
+    </ErrorBoundary>
+  )
 }
-
-export default function CharactersPage({ searchParams }: CharactersPageProps) {
-	const pageParam = searchParams?.page ?? 1
-
-	return (
-		<ErrorBoundary>
-			<Suspense fallback={<GridCardSkeleton count={15} />}>
-				<CharactersGrid page={pageParam} />
-			</Suspense>
-		</ErrorBoundary>
-	)
-}  

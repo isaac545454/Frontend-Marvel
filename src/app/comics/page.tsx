@@ -2,21 +2,14 @@ import { Suspense } from 'react'
 import ComicsGrid from './session/ComicsGrid'
 import { ErrorBoundary } from '@/components/ErrorBoundary/ErrorBoundary'
 import { GridCardSkeleton } from '@/components/GridCardSkeleton/GridCardSkeleton'
+import { PageProps } from '@/types/Pagination'
 
-interface ComicsPageProps {
-  searchParams: {
-    page?: number
-  }
-}
-
-export default function ComicsPage({ searchParams }: ComicsPageProps) {
-  const pageParam = searchParams?.page ?? 1
-
+export default function ComicsPage({ searchParams }: PageProps) {
   return (
     <ErrorBoundary>
       <Suspense fallback={<GridCardSkeleton count={15} />}>
-        <ComicsGrid page={pageParam} />
+        <ComicsGrid searchParams={searchParams} />
       </Suspense>
     </ErrorBoundary>
   )
-} 
+}

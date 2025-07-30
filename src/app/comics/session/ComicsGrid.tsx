@@ -1,13 +1,14 @@
 import { getComics } from '@/services/getComics'
 import { ComicCard } from '@/components/ComicCard/ComicCard'
+import { Pagination } from '@/components/Pagination/Pagination'
+import { getPageParam } from '@/lib/getPageParam'
+import { PageProps } from '@/types/Pagination'
 import styles from './ComicsGrid.module.css'
 
-interface ComicsGridProps {
-  page: number
-}
-
-export default async function ComicsGrid({ page }: ComicsGridProps) {
-  const comics = await getComics(page)
+export default async function ComicsGrid({ searchParams }: PageProps) {
+  const resolvedParams = await searchParams
+  const page = getPageParam(resolvedParams)
+  const { comics, totalPages } = await getComics(page)
 
   return (
     <div className={styles.comicsContainer}>
@@ -18,6 +19,7 @@ export default async function ComicsGrid({ page }: ComicsGridProps) {
           ))}
         </div>
       </div>
+      <Pagination currentPage={page} totalPages={totalPages} />
     </div>
   )
 } 

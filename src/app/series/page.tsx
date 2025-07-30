@@ -2,21 +2,14 @@ import { Suspense } from 'react'
 import SeriesGrid from './session/SeriesGrid'
 import { ErrorBoundary } from '@/components/ErrorBoundary/ErrorBoundary'
 import { GridCardSkeleton } from '@/components/GridCardSkeleton/GridCardSkeleton'
+import { PageProps } from '@/types/Pagination'
 
-interface SeriesPageProps {
-  searchParams: {
-    page?: number
-  }
-}
-
-export default function SeriesPage({ searchParams }: SeriesPageProps) {
-  const pageParam = searchParams?.page ?? 1
-
+export default function SeriesPage({ searchParams }: PageProps) {
   return (
     <ErrorBoundary>
       <Suspense fallback={<GridCardSkeleton count={15} />}>
-        <SeriesGrid page={pageParam} />
+        <SeriesGrid searchParams={searchParams} />
       </Suspense>
     </ErrorBoundary>
   )
-} 
+}

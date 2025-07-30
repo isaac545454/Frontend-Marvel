@@ -44,6 +44,8 @@
 .navLink {
   font-size: 0.875rem;
   color: var(--header-text);
+  width: fit-content;
+  display: block;
 }
 
 .socialLink {

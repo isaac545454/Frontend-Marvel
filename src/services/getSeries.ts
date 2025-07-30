@@ -4,10 +4,16 @@ import { Series } from '@/types/Series'
 type MarvelAPIResponse = {
   data: {
     results: Series[]
+    total: number
   }
 }
 
-export async function getSeries(page: number = 1, limit: number = 15): Promise<Series[]> {
+interface SeriesResponse {
+  series: Series[]
+  totalPages: number
+}
+
+export async function getSeries(page: number = 1, limit: number = 15): Promise<SeriesResponse> {
   const { ts, hash, apikey } = md5()
   const offset = (page - 1) * limit
 
@@ -18,5 +24,10 @@ export async function getSeries(page: number = 1, limit: number = 15): Promise<S
   if (!res.ok) throw new Error('Erro ao buscar séries')
 
   const json: MarvelAPIResponse = await res.json()
-  return json.data.results
+  const totalPages = Math.ceil(json.data.total / limit)
+
+  return {
+    series: json.data.results,
+    totalPages
+  }
 } 
