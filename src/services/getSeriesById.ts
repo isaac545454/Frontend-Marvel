@@ -7,7 +7,7 @@ export async function getSeriesById(id: string): Promise<Series> {
   
   const response = await fetch(
     `https://gateway.marvel.com/v1/public/series/${id}?ts=${ts}&apikey=${apikey}&hash=${hash}`,
-    { next: { revalidate: 60 * 60 * 24 } } // Cache for 24 hours
+    { next: { revalidate: 60 * 60 * 24 } }  
   )
 
   if (!response.ok) {

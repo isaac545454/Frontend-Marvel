@@ -1,18 +1,18 @@
 import { Suspense } from 'react'
-import CharactersGrid from './session/CharactersGrid'
 import { ErrorBoundary } from '@/components/ErrorBoundary/ErrorBoundary'
 import { GridCardSkeleton } from '@/components/GridCardSkeleton/GridCardSkeleton'
-import { PageProps } from '@/types/Pagination'
 import { SearchInput } from '@/components/SearchInput/SearchInput'
+import { SearchResults } from './session/SearchResults'
+import { PageProps } from '@/types/Pagination'
 import { PageContainer } from '@/components/PageContainer/PageContainer'
 
-export default function CharactersPage({ searchParams }: PageProps) {
+export default function SearchPage({ searchParams }: PageProps) {
   return (
     <ErrorBoundary>
       <PageContainer>
-        <SearchInput />
+        <SearchInput defaultValue={searchParams?.q?.toString()} />
         <Suspense fallback={<GridCardSkeleton count={15} />}>
-          <CharactersGrid searchParams={searchParams} />
+          <SearchResults searchParams={searchParams} />
         </Suspense>
       </PageContainer>
     </ErrorBoundary>

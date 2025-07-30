@@ -1,12 +1,8 @@
-.charactersContainer {
-  padding: 1rem;
+.container {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
-
-.charactersGrid {
+.grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 2rem;
@@ -15,20 +11,15 @@
 }
 
 @media (max-width: 768px) {
-  .charactersGrid {
+  .grid {
     gap: 1.2rem;
     padding: 0 0.5rem;
   }
 }
 
-/* Mobile */
 @media (max-width: 400px) {
-  .charactersContainer {
-    padding: 0.5rem;
-  }
-
-  .charactersGrid {
+  .grid {
     grid-template-columns: 1fr;
     padding: 0;
   }
-} 
+}

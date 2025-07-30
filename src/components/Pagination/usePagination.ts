@@ -1,6 +1,6 @@
 'use client'
 
-import {  usePathname } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
 
 interface UsePaginationProps {
   currentPage: number
@@ -9,11 +9,13 @@ interface UsePaginationProps {
 
 export function usePagination({ currentPage, totalPages }: UsePaginationProps) {
   const pathname = usePathname()
+  const searchParams = useSearchParams()
 
-    const handlePageChange = (page: number) => {
-      // Force a new navigation which will trigger the Suspense boundary
-      window.location.href = `${pathname}?page=${page}`
-    }
+  const handlePageChange = (page: number) => {
+    const params = new URLSearchParams(searchParams.toString())
+    params.set('page', page.toString())
+    window.location.href = `${pathname}?${params.toString()}`
+  }
 
   const getVisiblePages = () => {
     const maxVisiblePages = 5

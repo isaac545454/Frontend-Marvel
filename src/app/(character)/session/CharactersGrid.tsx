@@ -4,6 +4,7 @@ import { Pagination } from '@/components/Pagination/Pagination'
 import { getPageParam } from '@/lib/getPageParam'
 import { PageProps } from '@/types/Pagination'
 import styles from './CharactersGrid.module.css'
+ 
 
 export default async function CharactersGrid({ searchParams }: PageProps) {
   const resolvedParams = await searchParams
