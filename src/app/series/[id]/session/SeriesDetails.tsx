@@ -7,13 +7,12 @@ import { SeriesInfo } from './SeriesInfo'
 import { SeriesCreators } from './SeriesCreators'
 
 interface SeriesDetailsProps {
-  params: {
-    id: string
-  }
+  params: Promise<{id: string}>
 }
 
 export async function SeriesDetails({ params }: SeriesDetailsProps) {
-  const series = await getSeriesById(params.id)
+  const id = (await params).id
+  const series = await getSeriesById(id)
 
   return (
     <div className={styles.container}>

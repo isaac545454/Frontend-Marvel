@@ -1,11 +1,13 @@
 import { searchCharacters } from '@/services/searchCharacters'
 import { getPageParam } from '@/lib/getPageParam'
-import { PageProps } from '@/types/Pagination'
+import { PageSearchParams } from '@/types/Pagination'
 import { NoResults } from './NoResults'
 import { SearchGrid } from './SearchGrid'
 import { getSearchState } from './searchStates'
 
-export async function SearchResults({ searchParams }: PageProps) {
+type SearchResultsProps = { searchParams: PageSearchParams }
+
+export async function SearchResults({ searchParams }: SearchResultsProps) {
   const resolvedParams = await searchParams
   const query = resolvedParams?.q?.toString() ?? ''
   const page = getPageParam(resolvedParams)

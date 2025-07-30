@@ -3,6 +3,12 @@
 import { useState, useEffect } from 'react';
 import styles from './FavoriteButton.module.css';
 
+interface FavoriteCharacter {
+  id: string;
+  name: string;
+  image: string;
+}
+
 interface FavoriteButtonProps {
   characterId: string;
   characterName: string;
@@ -14,14 +20,14 @@ export function FavoriteButton({ characterId, characterName, characterImage }: F
 
   useEffect(() => {
     const favorites = JSON.parse(localStorage.getItem('marvelFavorites') || '[]');
-    setIsFavorite(favorites.some((fav: any) => fav.id === characterId));
+    setIsFavorite(favorites.some((fav: FavoriteCharacter) => fav.id === characterId));
   }, [characterId]);
 
   const toggleFavorite = () => {
     const favorites = JSON.parse(localStorage.getItem('marvelFavorites') || '[]');
     
     if (isFavorite) {
-      const newFavorites = favorites.filter((fav: any) => fav.id !== characterId);
+      const newFavorites = favorites.filter((fav: FavoriteCharacter) => fav.id !== characterId);
       localStorage.setItem('marvelFavorites', JSON.stringify(newFavorites));
     } else {
       const newFavorites = [...favorites, { 

@@ -20,11 +20,13 @@ export function usePagination({ currentPage, totalPages }: UsePaginationProps) {
   const getVisiblePages = () => {
     const maxVisiblePages = 5
     let startPage = Math.max(1, currentPage - 2)
-    let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1)
+    const initialEndPage = Math.min(totalPages, startPage + maxVisiblePages - 1)
 
-    if (endPage - startPage + 1 < maxVisiblePages) {
-      startPage = Math.max(1, endPage - maxVisiblePages + 1)
+    if (initialEndPage - startPage + 1 < maxVisiblePages) {
+      startPage = Math.max(1, initialEndPage - maxVisiblePages + 1)
     }
+    
+    const endPage = Math.min(totalPages, startPage + maxVisiblePages - 1)
 
     return Array.from(
       { length: endPage - startPage + 1 },

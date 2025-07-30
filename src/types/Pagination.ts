@@ -5,5 +5,5 @@ export type PageSearchParams = {
 }
 
 export interface PageProps {
-  searchParams: PageSearchParams
+  searchParams: Promise<PageSearchParams>
 } 

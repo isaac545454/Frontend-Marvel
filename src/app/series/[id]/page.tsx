@@ -3,13 +3,9 @@ import { ErrorBoundary } from '@/components/ErrorBoundary/ErrorBoundary'
 import { SeriesDetails } from './session/SeriesDetails'
 import { DetailsSkeleton } from '@/components/DetailsSkeleton/DetailsSkeleton'
 
-interface SeriesPageProps {
-  params: {
-    id: string
-  }
-}
+import { PageProps } from '@/types/RouteParams'
 
-export default function SeriesPage({ params }: SeriesPageProps) {
+export default function SeriesPage({ params }: PageProps) {
   return (
     <ErrorBoundary>
       <Suspense fallback={<DetailsSkeleton />}>

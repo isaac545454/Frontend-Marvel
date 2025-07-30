@@ -24,7 +24,7 @@ export default function Favorites() {
       <h1 className={styles.title}>My Favorite Characters</h1>
       
       {favorites.length === 0 ? (
-        <p className={styles.emptyMessage}>You haven't added any characters to your favorites yet.</p>
+        <p className={styles.emptyMessage}>You haven&apos;t added any characters to your favorites yet.</p>
       ) : (
         <div className={styles.grid}>
           {favorites.map((character) => (

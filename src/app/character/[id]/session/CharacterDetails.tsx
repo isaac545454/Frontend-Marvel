@@ -9,13 +9,14 @@ import { CharacterActions } from './CharacterActions'
 import styles from './CharacterDetails.module.css'
 
 interface CharacterDetailsProps {
-  params: {
+  params:  Promise< {
     id: string
-  }
+  }>
 }
 
 export default async function CharacterDetails({ params }: CharacterDetailsProps) {
-  const character = await getCharacterById(params.id)
+  const id = (await params).id
+  const character = await getCharacterById(id)
   const lastModified = formatDate(character?.modified)
 
   return (

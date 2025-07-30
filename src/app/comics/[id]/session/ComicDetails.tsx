@@ -6,13 +6,12 @@ import { ComicCreators } from './ComicCreators'
 import styles from './ComicDetails.module.css'
 
 interface ComicDetailsProps {
-  params: {
-    id: string
-  }
+  params: Promise<{id: string}>
 }
 
 export default async function ComicDetails({ params }: ComicDetailsProps) {
-  const comic = await getComicById(params.id)
+  const id = (await params).id
+  const comic = await getComicById(id)
 
   return (
     <div className={styles.container}>

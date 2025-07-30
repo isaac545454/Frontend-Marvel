@@ -1,10 +1,12 @@
 export type SearchState = 'queryNot' | 'noResults' | 'results'
 
-interface SearchStateConfig {
+import { Character } from '@/types/Character'
+
+export interface SearchStateConfig {
   state: SearchState
   data?: {
     query?: string
-    characters?: any[]
+    characters?: Character[]
     currentPage?: number
     totalPages?: number
   }
@@ -18,7 +20,7 @@ const searchStates = {
     state: 'noResults',
     data: { query }
   }),
-  results: (query: string, characters: any[], currentPage: number, totalPages: number): SearchStateConfig => ({
+  results: (query: string, characters: Character[], currentPage: number, totalPages: number): SearchStateConfig => ({
     state: 'results',
     data: {
       query,
@@ -29,7 +31,7 @@ const searchStates = {
   })
 }
 
-export function getSearchState(query: string | undefined, characters: any[] = [], currentPage = 1, totalPages = 1): SearchStateConfig {
+export function getSearchState(query: string | undefined, characters: Character[] = [], currentPage = 1, totalPages = 1): SearchStateConfig {
   if (!query?.trim()) {
     return searchStates.queryNot()
   }
