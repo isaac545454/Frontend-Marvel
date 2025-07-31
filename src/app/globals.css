@@ -1,14 +1,15 @@
 :root {
+  /* Colors */
   --background: #141414;
   --foreground: #ffffff;
 
-  /* Primary Colors */
+  /* Marvel Theme */
   --marvel-red: #e23636;
   --marvel-dark-red: #c11f1f;
   --marvel-gold: #f4c542;
   --marvel-blue: #518cca;
-  
-  /* Neutral Colors */
+
+  /* Neutrals */
   --marvel-gray: #8c8c8c;
   --marvel-light-gray: #2d2d2d;
   --marvel-dark-gray: #1a1a1a;
@@ -22,10 +23,10 @@
   --alert-bg: #4a1f1f;
   --alert-color: #ff6f6f;
 
-  /* Header Specific */
+  /* Header */
   --header-bg: var(--marvel-dark-gray);
   --header-text: var(--foreground);
-  --header-height: 80px;
+  --header-height: 100px;
 
   /* Layout */
   --max-width: 1220px;
@@ -38,12 +39,17 @@
   --font-weight-bold: 700;
 }
 
-/* Base styles */
+/* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: var(--background);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  margin: 0;
 }
 
 main {
@@ -52,15 +58,12 @@ main {
   margin: 0;
   padding: 0;
   padding-top: var(--header-height);
-  font-family: var(--font-league-spartan), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-league-spartan, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-}
-
+/* Container */
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -68,10 +71,11 @@ main {
   width: 100%;
 }
 
-/* Typography Styles */
+/* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-weight: var(--font-weight-bold);
   letter-spacing: -0.02em;
+  margin: 0;
 }
 
 h1 {
@@ -89,4 +93,18 @@ h3 {
 p {
   font-weight: var(--font-weight-regular);
   line-height: 1.6;
+  margin: 0 0 1rem 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  main {
+    padding-top: calc(var(--header-height) + 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding-top: calc(var(--header-height) + 40px);
+  }
 }
