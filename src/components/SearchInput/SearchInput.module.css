@@ -2,6 +2,20 @@
   width: 100%;
   margin: 0 0 1rem;
   padding: 0 2rem;
+  
+}
+/* Telas até 768px (tablet e celular) */
+@media (max-width: 768px) {
+  .searchContainer {
+    padding-top: 1rem;
+  }
+}
+
+/* Telas até 480px (celular pequeno) */
+@media (max-width: 480px) {
+  .searchContainer {
+    padding-top: 0rem;
+  }
 }
 
 .searchInput {
