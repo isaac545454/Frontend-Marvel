@@ -11,7 +11,9 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
-    "cypress": "cypress open"
+    "cypress": "cypress open",
+    "cypress:headless": "cypress run",
+    "test:e2e": "start-server-and-test dev http://localhost:3000 cypress:headless"
   },
   "dependencies": {
     "next": "15.4.4",
@@ -32,6 +34,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.4.4",
     "jsdom": "^26.1.0",
+    "start-server-and-test": "^2.0.12",
     "typescript": "^5",
     "vitest": "^3.2.4"
   }
