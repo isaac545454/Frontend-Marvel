@@ -27,7 +27,7 @@ Explore o projeto em produção: [PROJETO](https://frontend-marvel.vercel.app/)
   - `127.0.0.1`
 
 ### 3. Configurar Variáveis de Ambiente
-Crie um arquivo `.env.local` na raiz do projeto:
+Crie um arquivo `.env` na raiz do projeto:
 ```env
 NEXT_PUBLIC_MARVEL_PUBLIC_KEY=sua_public_key_aqui
 NEXT_PUBLIC_MARVEL_PRIVATE_KEY=sua_private_key_aqui
