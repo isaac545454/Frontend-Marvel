@@ -1,7 +1,7 @@
 import { md5 } from '@/lib/md5'
 import { Series } from '@/types/Series'
 
-type MarvelAPIResponse = {
+interface MarvelAPIResponse {
   data: {
     results: Series[]
     total: number
@@ -13,22 +13,32 @@ interface SeriesResponse {
   totalPages: number
 }
 
-export async function getSeries(page: number = 1, limit: number = 15): Promise<SeriesResponse> {
+export async function getSeries(
+  page: number = 1,
+  limit: number = 15
+): Promise<SeriesResponse> {
   const { ts, hash, apikey } = md5()
   const offset = (page - 1) * limit
 
-  const res = await fetch(
+  const response = await fetch(
     `https://gateway.marvel.com/v1/public/series?ts=${ts}&apikey=${apikey}&hash=${hash}&limit=${limit}&offset=${offset}&orderBy=startYear`,
-    { next: { revalidate: 60 * 60 * 24 } }  
+    {
+      cache: 'force-cache',          
+      next: { revalidate: 60 * 60 * 24 }, 
+    }
   )
 
-  if (!res.ok) throw new Error('Erro ao buscar séries')
+  if (!response.ok) {
+    throw new Error('Erro ao buscar séries')
+  }
 
-  const json: MarvelAPIResponse = await res.json()
-  const totalPages = Math.ceil(json.data.total / limit)
+  const data: MarvelAPIResponse = await response.json()
+
+  const total = data.data.total ?? 0
+  const series = data.data.results ?? []
 
   return {
-    series: json.data.results,
-    totalPages
+    series,
+    totalPages: Math.ceil(total / limit),
   }
-} 
+}
