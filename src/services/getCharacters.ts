@@ -1,21 +1,25 @@
- 
 import { md5 } from '@/lib/md5'
 import { Character } from '@/types/Character'
 import { MarvelResponse } from '@/types/MarvelResponse'
- 
 
 interface CharactersResponse {
   characters: Character[]
   totalPages: number
 }
 
-export async function getCharacters(page: number = 1, limit: number = 15): Promise<CharactersResponse> {
+export async function getCharacters(
+  page: number = 1,
+  limit: number = 15
+): Promise<CharactersResponse> {
   const { ts, hash, apikey } = md5()
   const offset = (page - 1) * limit
 
   const response = await fetch(
     `https://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${apikey}&hash=${hash}&limit=${limit}&offset=${offset}`,
-    { next: { revalidate: 60 * 60 * 24 } }  
+    {
+      next: { revalidate: 60 * 60 * 24 },
+      cache: 'force-cache',
+    }
   )
 
   if (!response.ok) {
@@ -23,10 +27,11 @@ export async function getCharacters(page: number = 1, limit: number = 15): Promi
   }
 
   const data: MarvelResponse<Character> = await response.json()
-  const totalPages = Math.ceil(data.data.total / limit)
+  const total = data.data.total ?? 0
+  const results = data.data.results ?? []
 
   return {
-    characters: data.data.results,
-    totalPages
+    characters: results,
+    totalPages: Math.ceil(total / limit),
   }
 }
