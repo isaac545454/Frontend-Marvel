@@ -2,7 +2,7 @@ import { Comic } from '@/types/Comic'
 import { MarvelResponse } from '@/types/MarvelResponse'
 import { md5 } from '@/lib/md5'
 
-export async function getComicById(id: string): Promise<Comic | null> {
+export async function getComicById(id: string): Promise<Comic> {
   const { ts, hash, apikey } = md5()
 
   const response = await fetch(
