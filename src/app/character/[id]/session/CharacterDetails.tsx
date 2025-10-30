@@ -17,7 +17,7 @@ interface CharacterDetailsProps {
 export default async function CharacterDetails({ params }: CharacterDetailsProps) {
   const id = (await params).id
   const character = await getCharacterById(id)
-  const lastModified = formatDate(character?.modified)
+  const lastModified = formatDate(character?.modified || new Date().toISOString())
 
   return (
     <div className={styles.container}>
