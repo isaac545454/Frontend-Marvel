@@ -7,13 +7,20 @@ interface CharactersResponse {
   totalPages: number
 }
 
-export async function searchCharacters(query: string, page: number = 1, limit: number = 15): Promise<CharactersResponse> {
+export async function searchCharacters(
+  query: string,
+  page: number = 1,
+  limit: number = 15
+): Promise<CharactersResponse> {
   const { ts, hash, apikey } = md5()
   const offset = (page - 1) * limit
 
   const response = await fetch(
     `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${encodeURIComponent(query)}&ts=${ts}&apikey=${apikey}&hash=${hash}&limit=${limit}&offset=${offset}`,
-    { next: { revalidate: 60 * 60 * 24 } }  
+    {
+      cache: 'force-cache',              
+      next: { revalidate: 60 * 60 * 24 } 
+    }
   )
 
   if (!response.ok) {
@@ -21,10 +28,11 @@ export async function searchCharacters(query: string, page: number = 1, limit: n
   }
 
   const data: MarvelResponse<Character> = await response.json()
-  const totalPages = Math.ceil(data.data.total / limit)
+  const total = data.data.total ?? 0
+  const characters = data.data.results ?? []
 
   return {
-    characters: data.data.results,
-    totalPages
+    characters,
+    totalPages: Math.ceil(total / limit)
   }
 }
