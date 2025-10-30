@@ -1,7 +1,7 @@
 import { md5 } from '@/lib/md5'
 import { Comic } from '@/types/Comic'
 
-type MarvelAPIResponse = {
+interface MarvelAPIResponse {
   data: {
     results: Comic[]
     total: number
@@ -13,22 +13,32 @@ interface ComicsResponse {
   totalPages: number
 }
 
-export async function getComics(page: number = 1, limit: number = 15): Promise<ComicsResponse> {
+export async function getComics(
+  page: number = 1,
+  limit: number = 15
+): Promise<ComicsResponse> {
   const { ts, hash, apikey } = md5()
   const offset = (page - 1) * limit
 
-  const res = await fetch(
+  const response = await fetch(
     `https://gateway.marvel.com/v1/public/comics?ts=${ts}&apikey=${apikey}&hash=${hash}&limit=${limit}&offset=${offset}&orderBy=focDate`,
-    { next: { revalidate: 60 * 60 * 24 } }  
+    {
+      cache: 'force-cache',  
+      next: { revalidate: 60 * 60 * 24 },  
+    }
   )
 
-  if (!res.ok) throw new Error('Erro ao buscar comics')
+  if (!response.ok) {
+    throw new Error('Erro ao buscar quadrinhos')
+  }
 
-  const json: MarvelAPIResponse = await res.json()
-  const totalPages = Math.ceil(json.data.total / limit)
+  const data: MarvelAPIResponse = await response.json()
+
+  const total = data.data.total ?? 0
+  const comics = data.data.results ?? []
 
   return {
-    comics: json.data.results,
-    totalPages
+    comics,
+    totalPages: Math.ceil(total / limit),
   }
-} 
+}
