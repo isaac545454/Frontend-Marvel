@@ -2,7 +2,7 @@ import { MarvelResponse } from '@/types/MarvelResponse'
 import { Series } from '@/types/Series'
 import { md5 } from '@/lib/md5'
 
-export async function getSeriesById(id: string): Promise<Series | null> {
+export async function getSeriesById(id: string): Promise<Series> {
   const { ts, hash, apikey } = md5()
   
   const response = await fetch(
